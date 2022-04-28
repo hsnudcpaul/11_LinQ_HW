@@ -38,6 +38,7 @@ namespace MyHomeWork
             this.lblMaster = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.button3 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -54,7 +55,10 @@ namespace MyHomeWork
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.button3 = new System.Windows.Forms.Button();
+            this.ordersTableAdapter1 = new _11_LinQ_HW.NWDataSetTableAdapters.OrdersTableAdapter();
+            this.nwDataSet1 = new _11_LinQ_HW.NWDataSet();
+            this.order_DetailsTableAdapter1 = new _11_LinQ_HW.NWDataSetTableAdapters.Order_DetailsTableAdapter();
+            this.productsTableAdapter1 = new _11_LinQ_HW.NWDataSetTableAdapters.ProductsTableAdapter();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -68,6 +72,7 @@ namespace MyHomeWork
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nwDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -83,7 +88,7 @@ namespace MyHomeWork
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(880, 451);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(562, 451);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // lblDetails
@@ -95,7 +100,7 @@ namespace MyHomeWork
             this.lblDetails.Location = new System.Drawing.Point(4, 0);
             this.lblDetails.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDetails.Name = "lblDetails";
-            this.lblDetails.Size = new System.Drawing.Size(872, 40);
+            this.lblDetails.Size = new System.Drawing.Size(554, 40);
             this.lblDetails.TabIndex = 102;
             this.lblDetails.Text = "訂單明細";
             // 
@@ -108,7 +113,7 @@ namespace MyHomeWork
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 62;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(870, 401);
+            this.dataGridView2.Size = new System.Drawing.Size(552, 401);
             this.dataGridView2.TabIndex = 100;
             // 
             // splitContainer2
@@ -127,7 +132,7 @@ namespace MyHomeWork
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainer2.Size = new System.Drawing.Size(1531, 455);
-            this.splitContainer2.SplitterDistance = 642;
+            this.splitContainer2.SplitterDistance = 960;
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -144,7 +149,7 @@ namespace MyHomeWork
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(638, 451);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(956, 451);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // lblMaster
@@ -156,9 +161,9 @@ namespace MyHomeWork
             this.lblMaster.Location = new System.Drawing.Point(4, 0);
             this.lblMaster.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMaster.Name = "lblMaster";
-            this.lblMaster.Size = new System.Drawing.Size(630, 40);
+            this.lblMaster.Size = new System.Drawing.Size(948, 40);
             this.lblMaster.TabIndex = 101;
-            this.lblMaster.Text = "訂單";
+            this.lblMaster.Text = "產品";
             // 
             // dataGridView1
             // 
@@ -169,7 +174,7 @@ namespace MyHomeWork
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(628, 401);
+            this.dataGridView1.Size = new System.Drawing.Size(946, 401);
             this.dataGridView1.TabIndex = 71;
             // 
             // splitContainer1
@@ -206,6 +211,18 @@ namespace MyHomeWork
             this.splitContainer1.SplitterDistance = 341;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 136;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button3.Location = new System.Drawing.Point(57, 261);
+            this.button3.Margin = new System.Windows.Forms.Padding(5);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(372, 42);
+            this.button3.TabIndex = 136;
+            this.button3.Text = "     FileInfo[]  ALL";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label3
             // 
@@ -253,6 +270,7 @@ namespace MyHomeWork
             this.button6.TabIndex = 133;
             this.button6.Text = "All 訂單 ";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button14
             // 
@@ -276,6 +294,7 @@ namespace MyHomeWork
             this.button1.TabIndex = 70;
             this.button1.Text = "     某年訂單 / 訂單明細";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -324,6 +343,7 @@ namespace MyHomeWork
             this.button12.TabIndex = 97;
             this.button12.Text = "上一頁";
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // button4
             // 
@@ -388,17 +408,22 @@ namespace MyHomeWork
             // 
             this.bindingSource1.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
             // 
-            // button3
+            // ordersTableAdapter1
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button3.Location = new System.Drawing.Point(57, 261);
-            this.button3.Margin = new System.Windows.Forms.Padding(5);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(372, 42);
-            this.button3.TabIndex = 136;
-            this.button3.Text = "     FileInfo[]  ALL";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.ordersTableAdapter1.ClearBeforeFill = true;
+            // 
+            // nwDataSet1
+            // 
+            this.nwDataSet1.DataSetName = "NWDataSet";
+            this.nwDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // order_DetailsTableAdapter1
+            // 
+            this.order_DetailsTableAdapter1.ClearBeforeFill = true;
+            // 
+            // productsTableAdapter1
+            // 
+            this.productsTableAdapter1.ClearBeforeFill = true;
             // 
             // Frm作業_1
             // 
@@ -425,6 +450,7 @@ namespace MyHomeWork
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nwDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -457,5 +483,9 @@ namespace MyHomeWork
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.Button button3;
+        private _11_LinQ_HW.NWDataSetTableAdapters.OrdersTableAdapter ordersTableAdapter1;
+        private _11_LinQ_HW.NWDataSet nwDataSet1;
+        private _11_LinQ_HW.NWDataSetTableAdapters.Order_DetailsTableAdapter order_DetailsTableAdapter1;
+        private _11_LinQ_HW.NWDataSetTableAdapters.ProductsTableAdapter productsTableAdapter1;
     }
 }
