@@ -66,7 +66,7 @@ namespace MyHomeWork
 
         private void button13_Click(object sender, EventArgs e)
         {
-            lblMaster.Text = "訂單";
+            lblMaster.Text = "產品";
             if (skip > nwDataSet1.Products.Rows.Count)
             {
                 MessageBox.Show("已顯示最後一筆");
@@ -242,6 +242,7 @@ namespace MyHomeWork
         {
             take = 0;
             skip = 0;
+            takeold = 0;
         }
 
         void ShowProducts()
