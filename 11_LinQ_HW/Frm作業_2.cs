@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -133,20 +134,17 @@ namespace MyHomeWork
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string id = dataGridView1.Rows[e.RowIndex].Cells["ProductID"].ToString();
+            string id = dataGridView1.Rows[e.RowIndex].Cells["ProductID"].Value.ToString();
              var q = advWDataSet1.ProductProductPhoto.Where(n => n.ProductID.ToString() == id).Select(n => new { n.ProductPhotoID });
          int a;
-            foreach(var i in q.ToList())
-            {
-                a = i.ProductPhotoID;
-            }
-            //var q1 = advWDataSet1.ProductPhoto.Where(n => n.ProductPhotoID.ToString() == a).Select(n => new { n.LargePhoto });
-            //byte[] bytes;
-            //foreach (var p in q1.ToList())
-            //{
-            //    bytes=(byte[]) p
-            //}
-         
+            a = q.ToList()[0].ProductPhotoID;
+            var q1 = advWDataSet1.ProductPhoto.Where(n => n.ProductPhotoID == a).Select(n => new { n.LargePhoto });
+            byte[] bytes = q1.ToList()[0].LargePhoto;
+
+            MemoryStream ms = new MemoryStream(bytes);
+            Image image = System.Drawing.Image.FromStream(ms);
+            pictureBox1.Image=image;
+
         }
     }
 }

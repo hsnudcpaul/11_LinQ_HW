@@ -1717,11 +1717,11 @@ namespace _11_LinQ_HW {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Color {
                 get {
-                    try {
-                        return ((string)(this[this.tableProduct.ColorColumn]));
+                    if (this.IsColorNull()) {
+                        return string.Empty;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'Product\' 中資料行 \'Color\' 的值是 DBNull。", e);
+                    else {
+                        return ((string)(this[this.tableProduct.ColorColumn]));
                     }
                 }
                 set {

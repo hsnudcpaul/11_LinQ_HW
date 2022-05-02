@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdvWDataSet.cs">
+      <DependentUpon>AdvWDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="AdvWDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

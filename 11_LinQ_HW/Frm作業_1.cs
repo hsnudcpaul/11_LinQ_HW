@@ -71,7 +71,7 @@ namespace MyHomeWork
             {
                 MessageBox.Show("已顯示最後一筆");
             }
-                else
+            else
             {
                 if (int.TryParse(textBox1.Text, out take) && int.Parse(textBox1.Text) >= 0 && int.Parse(textBox1.Text) <= nwDataSet1.Products.Rows.Count)
                 {
@@ -183,13 +183,11 @@ namespace MyHomeWork
                         select o;
                 dataGridView1.DataSource = q.ToList();
 
-                var od = from d in nwDataSet1.Order_Details
-                         join o in nwDataSet1.Orders
-                         on d.OrderID equals o.OrderID
-                         where o.OrderDate.Year.ToString() == year
-                         select d;
-                dataGridView2.DataSource = od.ToList();
+                var orders = q.Select(x => x.OrderID).Distinct().ToList();
+                var details = nwDataSet1.Order_Details.Where(x => orders.Contains(x.OrderID)).ToList();
 
+
+                dataGridView2.DataSource = details;
 
             }
             else
@@ -202,41 +200,41 @@ namespace MyHomeWork
         private void button12_Click(object sender, EventArgs e)
         {
             lblMaster.Text = "產品";
-          
-                    if (int.TryParse(textBox1.Text, out take) && int.Parse(textBox1.Text) >= 0 && int.Parse(textBox1.Text) <= nwDataSet1.Products.Rows.Count)
-                    {
-                        if (skip == 0)
-                        {
-                            ShowProducts();
-                            skip = take;
-                            flag = false;
-                            takeold = take;
-                        }
-                        else
-                        {
-                            if (flag == true)
-                            {
-                                flag = false;
-                                skip = skip - take - takeold;
-                                ShowProducts();
-                                takeold = take;
 
-                            }
-                            else
-                            {
-                                skip = skip - take;
-                                ShowProducts();
-                                takeold = take;
-                            }
-                        }
+            if (int.TryParse(textBox1.Text, out take) && int.Parse(textBox1.Text) >= 0 && int.Parse(textBox1.Text) <= nwDataSet1.Products.Rows.Count)
+            {
+                if (skip == 0)
+                {
+                    ShowProducts();
+                    skip = take;
+                    flag = false;
+                    takeold = take;
+                }
+                else
+                {
+                    if (flag == true)
+                    {
+                        flag = false;
+                        skip = skip - take - takeold;
+                        ShowProducts();
+                        takeold = take;
+
                     }
                     else
                     {
-                        MessageBox.Show("請輸入正確的筆數");
+                        skip = skip - take;
+                        ShowProducts();
+                        takeold = take;
                     }
+                }
+            }
+            else
+            {
+                MessageBox.Show("請輸入正確的筆數");
+            }
             dataGridView2.DataSource = null;
         }
-        
+
 
         void reSet()
         {

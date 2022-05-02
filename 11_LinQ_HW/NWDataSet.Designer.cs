@@ -1713,11 +1713,11 @@ namespace _11_LinQ_HW {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string ShipRegion {
                 get {
-                    if (this.IsShipRegionNull()) {
-                        return null;
-                    }
-                    else {
+                    try {
                         return ((string)(this[this.tableOrders.ShipRegionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Orders\' 中資料行 \'ShipRegion\' 的值是 DBNull。", e);
                     }
                 }
                 set {
@@ -1729,11 +1729,11 @@ namespace _11_LinQ_HW {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string ShipPostalCode {
                 get {
-                    if (this.IsShipPostalCodeNull()) {
-                        return null;
-                    }
-                    else {
+                    try {
                         return ((string)(this[this.tableOrders.ShipPostalCodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Orders\' 中資料行 \'ShipPostalCode\' 的值是 DBNull。", e);
                     }
                 }
                 set {
